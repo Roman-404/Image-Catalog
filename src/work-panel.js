@@ -14,14 +14,14 @@ export default class WorkPanel extends Component {
         this.setState({
             tag: event.target.value
         })
+        this.props.setNotification('')
     }
 
     createImageItem = event => {
         event.preventDefault()
-        this.setState({
-            loading: true
-        })
+        this.setState({ loading: true })
         const { tag } = this.state;
+        if (tag) {
         getImage(tag).then(data => {
             this.setState({
                 image: {
@@ -34,11 +34,19 @@ export default class WorkPanel extends Component {
             })
             this.props.setState([...this.props.images, this.state.image])
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            this.props.setNotification(`Произошла http ошибка: ${error}`)
+            this.setState({ loading: false })
+        })}
+        else {
+            this.props.setNotification('заполните поле \'тег\'')
+            this.setState({ loading: false })
+        }
     }
 
     onClear = () => {
         this.props.setState([])
+        this.props.setNotification('')
         this.setState({
             tag: null
         })
@@ -51,7 +59,6 @@ export default class WorkPanel extends Component {
     render() {
         const { image, tag, loading } = this.state;
         const { group } = this.props;
-        // console.log(image, this.props)
         return (
             <div onSubmit={this.createImageItem} className='work-panel'>
                 <form className='form-inline'>

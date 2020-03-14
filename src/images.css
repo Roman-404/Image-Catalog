@@ -33,6 +33,10 @@ li {
     list-style-type: none;
 }
 
+li:active {
+    opacity: .5;
+}
+
 .legend {
     padding-left: 58px;
     text-align: left;
@@ -43,4 +47,8 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.edge {
+    overflow: hidden;
 }

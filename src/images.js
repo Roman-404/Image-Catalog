@@ -12,7 +12,9 @@ const Images = ({ images, group }) => {
                     <ul>
                     {group_images[tag].map(e =>
                         <li key={e.id}>
-                            <img src={e.image} alt='None'></img>
+                            <div className='edge'>
+                                <img src={e.image} alt='None'></img>
+                            </div>
                         </li>)}
                     </ul>
               </fieldset>
@@ -22,7 +24,9 @@ const Images = ({ images, group }) => {
                 <ul>
                 {images.sort((a, b) => {return a.date - b.date}).map(e => 
                     <li key={e.id}>
-                        <img src={e.image} alt='None'></img>
+                        <div className='edge'>
+                            <img src={e.image} alt='None'></img>
+                        </div>
                     </li>
                     )}
                 </ul>
