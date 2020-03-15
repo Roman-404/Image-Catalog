@@ -35,7 +35,7 @@ export default class WorkPanel extends Component {
             })
             this.props.setState([...this.props.images, this.state.image])}
             else {
-                this.props.setNotification(`По тегу ${tag} ничего не найдено`)
+                this.props.setNotification(`По тегу '${tag}' ничего не найдено`)
                 this.setState({ loading: false })
             }
         })
