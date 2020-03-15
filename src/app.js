@@ -7,6 +7,7 @@ const App = () => {
     const [images, setState] = useState([]);
     const [group, setGroup] = useState(false);
     const [notification, setNotification] = useState(null);
+    const [tag, setTag] = useState('');
     
     return (
         <div>
@@ -15,13 +16,16 @@ const App = () => {
                     setState={setState}
                     group={group}
                     setGroup={setGroup}
-                    setNotification={setNotification}/>
+                    setNotification={setNotification}
+                    tag={tag}
+                    setTag={setTag}/>
             <Notification
                     notification={notification}
                     setNotification={setNotification}/>
             <Images
                     images={images}
-                    group={group}/>
+                    group={group}
+                    setTag={setTag}/>
         </div>
     )
 };

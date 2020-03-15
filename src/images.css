@@ -50,5 +50,6 @@ li:active {
 }
 
 .edge {
+    max-height: 99.9%;
     overflow: hidden;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import './images.css'
+import ImageItem from './image-item';
 
-const Images = ({ images, group }) => {
+const Images = ({ images, group, setTag }) => {
     const group_images = onGroup(images)
     return (
         <div>
@@ -11,11 +12,11 @@ const Images = ({ images, group }) => {
                 <div className='legend'><legend>{tag}</legend></div>
                     <ul>
                     {group_images[tag].map(e =>
-                        <li key={e.id}>
-                            <div className='edge'>
-                                <img src={e.image} alt='None'></img>
-                            </div>
-                        </li>)}
+                        <ImageItem id={e.id}
+                                   tag={e.tag}
+                                   image={e.image}
+                                   setTag={setTag}/>
+                        )}
                     </ul>
               </fieldset>
             </center>)
@@ -23,11 +24,10 @@ const Images = ({ images, group }) => {
             <div className='stack'>
                 <ul>
                 {images.sort((a, b) => {return a.date - b.date}).map(e => 
-                    <li key={e.id}>
-                        <div className='edge'>
-                            <img src={e.image} alt='None'></img>
-                        </div>
-                    </li>
+                    <ImageItem id={e.id}
+                               tag={e.tag}
+                               image={e.image}
+                               setTag={setTag}/>
                     )}
                 </ul>
             </div>}
