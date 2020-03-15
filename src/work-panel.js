@@ -14,7 +14,7 @@ export default class WorkPanel extends Component {
         this.setState({
             tag: event.target.value
         })
-        this.props.setNotification('')
+        this.props.setNotification(null)
     }
 
     createImageItem = event => {
@@ -23,6 +23,7 @@ export default class WorkPanel extends Component {
         const { tag } = this.state;
         if (tag) {
         getImage(tag).then(data => {
+            if (data.length) {
             this.setState({
                 image: {
                     id: data.id,
@@ -32,9 +33,14 @@ export default class WorkPanel extends Component {
                 },
                 loading: false
             })
-            this.props.setState([...this.props.images, this.state.image])
+            this.props.setState([...this.props.images, this.state.image])}
+            else {
+                this.props.setNotification(`По тегу ${tag} ничего не найдено`)
+                this.setState({ loading: false })
+            }
         })
         .catch(error => {
+            error = error.toString().replace(/Error:/, '')
             this.props.setNotification(`Произошла http ошибка: ${error}`)
             this.setState({ loading: false })
         })}
@@ -46,7 +52,7 @@ export default class WorkPanel extends Component {
 
     onClear = () => {
         this.props.setState([])
-        this.props.setNotification('')
+        this.props.setNotification(null)
         this.setState({
             tag: null
         })

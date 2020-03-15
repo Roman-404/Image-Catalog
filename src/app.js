@@ -6,7 +6,7 @@ import Images from './images';
 const App = () => {
     const [images, setState] = useState([]);
     const [group, setGroup] = useState(false);
-    const [notification, setNotification] = useState('');
+    const [notification, setNotification] = useState(null);
     
     return (
         <div>
