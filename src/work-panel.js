@@ -20,7 +20,7 @@ export default class WorkPanel extends Component {
         const { tag } = this.props;
         if (tag) {
         getImage(tag).then(data => {
-            if (data.length) {
+            if (data.length || data) {
             this.setState({
                 image: {
                     id: data.id,
@@ -35,9 +35,9 @@ export default class WorkPanel extends Component {
         })
         .catch(error => {
             error = error.toString().replace(/Error:/, '')
-            this.onError(`Произошла http ошибка: ${error}`)
+            this.onError(`Произошла http ошибка: '${error}'`)
         })}
-        else this.onError('заполните поле \'тег\'')
+        else this.onError('Заполните поле \'тег\'')
     }
 
     onClear = () => {
