@@ -20,7 +20,7 @@ export default class WorkPanel extends Component {
         const { tag } = this.props;
         if (tag) {
         getImage(tag).then(data => {
-            if (data.length || data) {
+            if (Object.keys(data).length) {
             this.setState({
                 image: {
                     id: data.id,
