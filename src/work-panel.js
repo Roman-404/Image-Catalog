@@ -57,7 +57,7 @@ export default class WorkPanel extends Component {
 
     render() {
         const { loading } = this.state;
-        const { group, tag } = this.props;
+        const { group, tag, images } = this.props;
         return (
             <div onSubmit={this.createImageItem} className='work-panel'>
                 <form className='form-inline'>
@@ -68,7 +68,7 @@ export default class WorkPanel extends Component {
                     {loading ? <button disabled className='btn btn-load mx-sm-2'>Загрузка...</button> : 
                     <button type='submit' className='btn btn-load mx-sm-2'>Загрузить</button>}
                     <button type='reset' className='btn btn-clear' onClick={this.onClear}>Очистить</button>
-                    <button type='button' className='btn btn-group mx-sm-2' onClick={this.onGroup}>
+                    <button disabled={images.length ? false : true} type='button' className='btn btn-group mx-sm-2' onClick={this.onGroup}>
                         {group ? 'Разгруппировать': 'Группировать'}
                     </button>
                 </form>
