@@ -7,7 +7,4 @@ export const getImage = (tag) => {
             return response.data.data
         }
     )
-    // .catch(() => {
-    //     return []
-    // })
 };
