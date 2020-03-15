@@ -2,7 +2,6 @@ import React from 'react';
 
 const ImageItem = ({ id, tag, image, setTag }) => {
     const onItemClick = tag => {
-        console.log(tag)
         setTag(tag)
     }
     

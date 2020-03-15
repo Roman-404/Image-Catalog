@@ -31,20 +31,13 @@ export default class WorkPanel extends Component {
                 loading: false
             })
             this.props.setState([...this.props.images, this.state.image])}
-            else {
-                this.props.setNotification(`По тегу '${tag}' ничего не найдено`)
-                this.setState({ loading: false })
-            }
+            else this.onError(`По тегу '${tag}' ничего не найдено`)
         })
         .catch(error => {
             error = error.toString().replace(/Error:/, '')
-            this.props.setNotification(`Произошла http ошибка: ${error}`)
-            this.setState({ loading: false })
+            this.onError(`Произошла http ошибка: ${error}`)
         })}
-        else {
-            this.props.setNotification('заполните поле \'тег\'')
-            this.setState({ loading: false })
-        }
+        else this.onError('заполните поле \'тег\'')
     }
 
     onClear = () => {
@@ -55,6 +48,11 @@ export default class WorkPanel extends Component {
 
     onGroup = () => {
         this.props.setGroup(group => !group)
+    }
+
+    onError = notification => {
+        this.props.setNotification(notification)
+        this.setState({ loading: false })
     }
 
     render() {
