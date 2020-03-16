@@ -53,3 +53,7 @@ li:active {
     max-height: 99.9%;
     overflow: hidden;
 }
+
+embed {
+    pointer-events: none
+}

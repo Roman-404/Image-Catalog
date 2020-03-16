@@ -25,7 +25,7 @@ export default class WorkPanel extends Component {
                 image: {
                     id: data.id,
                     tag: tag,
-                    image: data.image_url,
+                    image: data.embed_url,
                     date: new Date()
                 },
                 loading: false
