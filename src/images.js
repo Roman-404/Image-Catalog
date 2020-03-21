@@ -6,13 +6,14 @@ const Images = ({ images, group, setTag }) => {
     const group_images = onGroup(images)
     return (
         <div>
-            {group ? Object.keys(group_images).map(tag =>
-            <center>
+            {group ? Object.keys(group_images).map((tag, index) =>
+            <center key={index}>
               <fieldset>
                 <div className='legend'><legend>{tag}</legend></div>
                     <ul>
                     {group_images[tag].map(e =>
-                        <ImageItem id={e.id}
+                        <ImageItem key={e.id}
+                                   id={e.id}
                                    tag={e.tag}
                                    image={e.image}
                                    setTag={setTag}/>
@@ -24,7 +25,8 @@ const Images = ({ images, group, setTag }) => {
             <div className='stack'>
                 <ul>
                 {images.sort((a, b) => {return a.date - b.date}).map(e => 
-                    <ImageItem id={e.id}
+                    <ImageItem key={e.id}
+                               id={e.id}
                                tag={e.tag}
                                image={e.image}
                                setTag={setTag}/>
